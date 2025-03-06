@@ -2,7 +2,7 @@ const express = require('express');
 
 const sqlite3 = require('sqlite3');
 
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -17,6 +17,13 @@ app.post('/add', (req, res) => {
     db.run('INSERT INTO tasks (title) VALUES (?)', [req.body.title], function () {
         res.json({tag: "Mittwoch", bald_wirds: "Mittagspause"});
     });
+});
+
+
+app.get/('/liste_abrufen', (req, res) => {
+    db.all('SELECT * FROM tasks', function (err, rows){
+        res.json(rows);
+    })
 });
 
 
