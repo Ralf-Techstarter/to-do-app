@@ -8,7 +8,10 @@ const app = express();
 
 const db = new sqlite3.Database('./tasks.db');
 
+const cors = require('cors');
+
 app.use(bodyParser.json());
+app.use(cors());
 
 db.run('CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, completed BOOLEAN DEFAULT 0)')
 
